@@ -9,6 +9,7 @@ import { postReq } from "api";
 
 import { ALLOWED_CORE_NETWORK } from "pages/Home";
 import AddDelegateModal from "./AddDelegateModal";
+import EditChannelModal from './EditChannel';
 import RemoveDelegateModal from "./RemoveDelegateModal";
 import ActivateChannelModal from "./ActivateChannelModal";
 import EPNSCoreHelper from "helpers/EPNSCoreHelper";
@@ -39,7 +40,6 @@ function ChannelSettings() {
   const theme = useTheme();
   const { channelState } = channelDetails;
   const onCoreNetwork = ALLOWED_CORE_NETWORK === chainId;
-
   const [loading, setLoading] = React.useState(false);
   const [
     showActivateChannelPopup,
@@ -50,6 +50,8 @@ function ChannelSettings() {
   );
   const [poolContrib, setPoolContrib] = React.useState(0);
   const [addDelegateLoading, setAddDelegateLoading] = React.useState(false);
+  const [editChannelLoading,setEditChannelLoading]=React.useState(false);
+  const [editModalOpen, setEditModalOpen] = React.useState(false);
   const [addModalOpen, setAddModalOpen] = React.useState(false);
   const [removeDelegateLoading, setRemoveDelegateLoading] = React.useState(
     false
@@ -252,6 +254,19 @@ function ChannelSettings() {
         <ActiveChannelWrapper>
           <ChannelActionButton
             disabled={channelInactive}
+            onClick={() => !channelInactive && setEditModalOpen(true)}
+          >
+            <ActionTitle>
+              {editChannelLoading ? (
+                <Loader type="Oval" color="#FFF" height={16} width={16} />
+              ) : (
+                "Edit Channel"
+              )}
+            </ActionTitle>
+          </ChannelActionButton>
+
+          <ChannelActionButton
+            disabled={channelInactive}
             onClick={() => !channelInactive && setAddModalOpen(true)}
           >
             <ActionTitle>
@@ -303,6 +318,20 @@ function ChannelSettings() {
             });
           }}
           addDelegate={addDelegate}
+        />
+      )}
+      {/* modal to edit channel */}
+      {editModalOpen && (
+        <EditChannelModal
+          onClose={() => setEditModalOpen(false)}
+          onSuccess={() => {
+            toaster.update(notificationToast(), {
+              render: "Delegate Added",
+              type: toaster.TYPE.INFO,
+              autoClose: 5000,
+            });
+          }}
+          channelDetails={channelDetails}
         />
       )}
       {/* modal to remove a delegate */}
