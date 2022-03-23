@@ -9,6 +9,7 @@ import {Item, H2, H3, Span, Button, Input} from 'components/SharedStyling';
 
 const ethers = require('ethers');
 
+const minStakeFees = 50;
 
 export default function EditChannelModal({
     onClose,onSuccess, channelDetails
@@ -16,12 +17,16 @@ export default function EditChannelModal({
 
     const themes = useTheme();
     console.log(themes);
+    const { active, error, account, library, chainId } = useWeb3React();
     const modalRef = useRef(null);
     const [mainAdress, setMainAddress] = useState('');
     const [loading, setLoading] = useState('');
     const [channelName,setChannelName]=useState('');
     const [channelInfo,setChannelInfo]=useState('');
     const [channelCTA,setChannelCTA]=useState('');
+    const [chainDetails, setChainDetails] = React.useState("");
+    const [channelStakeFees, setChannelStakeFees] = React.useState(minStakeFees);
+
 
     useEffect(()=>{
         console.log("channelDetails",channelDetails);
@@ -33,29 +38,60 @@ export default function EditChannelModal({
     // Form signer and contract connection
     useClickAway(modalRef, onClose);
 
-    const addDelegateFunction = () => {
-        setLoading('loading')
-        .then(async (tx) => {
-            console.log(tx);
-            setLoading("Transaction Sent!");
+    const editChannel=async()=>{
+        setLoading('Loading');
+        var blockchain = "";
+        var chain_id = "";
+        var address = "";
 
-            setTimeout(() => {
-                onSuccess();
-                onClose();
-            }, 2000);
+        const input = JSON.stringify({
+        name: channelName,
+        info: channelInfo,
+        url: channelCTA,
+        // icon: channelFile,
+        blockchain: blockchain,
+        chain_id: chain_id,
+        address: address,
+    });
 
-        })
-        .catch((err) => {
-            console.log({
-                err
-            })
-            setLoading('There was an error');
-            setTimeout(() => {
-                setLoading('')
-            }, 2000)
-        })
-    };
-    
+    var signer = library.getSigner(account);
+    let contract = new ethers.Contract(
+        addresses.epnscore,
+        abis.epnscore,
+        signer
+      );
+  
+    const ipfs = require("nano-ipfs-store").at("https://ipfs.infura.io:5001");
+    const storagePointer = await ipfs.add(input);
+    console.log("IPFS storagePointer:", storagePointer);
+
+    const identity = "1+" + storagePointer; // IPFS Storage Type and HASH
+    const identityBytes = ethers.utils.toUtf8Bytes(identity);
+    const fees = ethers.utils.parseUnits(channelStakeFees.toString(), 18);
+    const channelType = 2;   
+    var anotherSendTxPromise = contract.updateChannelMeta(
+      account,
+      identityBytes,
+      { gasLimit: 1000000 }
+    );
+    anotherSendTxPromise
+    .then(async function (tx) {
+      console.log(tx);
+      console.log("Check: " + account);
+      await library.waitForTransaction(tx.hash);
+      setLoading("Successfully Edited");
+
+      setTimeout(() => {
+          window.location.reload();
+      }, 2000);
+  })
+      .catch((err) => {
+        console.log("Error --> %o", err);
+        console.log({ err });
+        setLoading("Error")
+      });
+
+    }
 
     return (
         <Overlay>
@@ -109,8 +145,8 @@ export default function EditChannelModal({
                         flex="1"
                         radius="0px"
                         padding="20px 10px"
-                        disabled={mainAdress.length !== 42}
-                        onClick={addDelegateFunction}
+                        onClick={e=>editChannel(e)}
+                        // disabled={mainAdress.length !== 42}
                     >
                         { loading && <Loader
                             type="Oval"
