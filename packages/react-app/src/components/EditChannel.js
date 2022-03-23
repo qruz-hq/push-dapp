@@ -104,17 +104,20 @@ export default function EditChannelModal({
         e.preventDefault();
         e.stopPropagation();
         //let's grab the image file
-        let imageFile = e.dataTransfer.files[0];
-        handleFile(imageFile);
+        handleFile(e.dataTransfer, 'transfer');
       };
 
-      const handleFile = (file) => {
+      const handleFile = (file, path) => {
         //you can carry out any file validations here...
+        console.log(file?.files[0])
+        if(file?.files[0]){
+
         var reader = new FileReader();
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(file?.files[0]);
+
 
         reader.onloadend = function(e) {
-            // console.log(reader.result);
+            console.log(reader.result);
             const response = handleLogoSizeLimitation(reader.result);
             console.log(response)
             if (response.success) {
@@ -129,8 +132,13 @@ export default function EditChannelModal({
           };
 
 
-        setImage(file);
-        setPreviewUrl(URL.createObjectURL(file));
+
+        setImage(file?.files[0]);
+        setPreviewUrl(URL.createObjectURL(file?.files[0]));
+        }
+        else{
+            return "Nothing...."
+        }
       };
 
       const removeImage = (e) => {
@@ -196,7 +204,7 @@ export default function EditChannelModal({
             {/* upload image */}
             <Space className="">
               <div>
-                <H3 margin="2px 0px" color="#e20880">UPLOAD CHANNEL LOGO. MAKE SURE IMAGE IS 128X128PX</H3>
+                <Field>Upload Channel Logo (Make sure image is 128px * 128px)</Field>
                 <div
                   onDragOver={(e) => handleDragOver(e)}
                   onDrop={(e) => handleOnDrop(e)}
@@ -228,9 +236,10 @@ export default function EditChannelModal({
                           accept="image/*"
                           name="file-upload"
                           hidden
-                          onChange={(e) => handleFile(e.target.files[0])}
+                          onChange={(e) => handleFile(e.target, 'target')}
                           type="file"
                           className="sr-only"
+                          readOnly
                         />
                       </label>
                       <span className="">- or drag and drop</span>
@@ -261,6 +270,7 @@ export default function EditChannelModal({
 
 
                 <Item align="flex-start">
+                    <Field>Channel Name</Field>
                     <CustomInput
                         required
                         placeholder="Channel Name"
@@ -273,6 +283,7 @@ export default function EditChannelModal({
                     />
                 </Item>
                 <Item align="flex-start">
+                    <Field>Channel Description</Field>
                     <CustomInput
                         required
                         placeholder="Channel Description"
@@ -285,6 +296,7 @@ export default function EditChannelModal({
                     />
                 </Item>
                 <Item align="flex-start">
+                    <Field>Channel CTA</Field>
                     <CustomInput
                         required
                         placeholder="Channel CTA"
@@ -296,7 +308,7 @@ export default function EditChannelModal({
                         onChange={(e) => {setChannelCTA(e.target.value)}}
                     />
                 </Item>
-                <Item margin="15px 0px 0px 0px" flex="1" self="stretch" align="stretch">
+                <Item margin="35px 0px 0px 0px" flex="1" self="stretch" align="stretch">
                     <Button
                         bg='#e20880'
                         color='#fff'
@@ -318,7 +330,7 @@ export default function EditChannelModal({
                             textTransform="uppercase"
                             color="#fff" weight="400"
                             size="0.8em" spacing="0.2em"
-                            value={loading ? loading : "Edit"}
+                            value={loading ? loading : "Edit Channel Details"}
                         />
                     </Button>
                 </Item>
@@ -335,13 +347,13 @@ const StyledInput = styled(Input)`
 
 const Space = styled.div`
     width: 100%;
-    margin-top: 12px;
     .bordered {
         display: flex;
         justify-content: center;
         border: 4px dotted #ccc;
         border-radius: 10px;
         padding: 10px;
+        margin-top: 10px;
         .inner {
             margin-top: 0.25rem;
             text-align: center;
@@ -407,7 +419,11 @@ const Space = styled.div`
 const CustomInput = styled(Input)`
     box-sizing: border-box;
     width: 100%;
-    margin: 20px 0px;
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+    &: focus{
+     border: 1px solid #6b7280;
+    }
 `;
 
 const Overlay = styled.div`
@@ -428,4 +444,10 @@ const Overlay = styled.div`
 const AliasModal = styled.div`
     padding: 20px 30px;
     background: ${props => props.background.mainBg};
+`;
+
+const Field = styled.div`
+    margin: 20px 50px 5px 0px;
+    color: #9ca3af;
+    text-transform: uppercase;
 `;
