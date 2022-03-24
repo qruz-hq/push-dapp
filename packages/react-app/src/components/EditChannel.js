@@ -198,7 +198,7 @@ export default function EditChannelModal({
                     <H2 textTransform="uppercase" spacing="0.1em">
                     <Span weight="200">Edit </Span><Span bg="#674c9f" color="#fff" weight="600" padding="0px 8px">Channel</Span>
                     </H2>
-                    <H3>Edit Channel.</H3>
+                    <H3>Edit Channel Details</H3>
                 </Item>
             
             {/* upload image */}
@@ -447,7 +447,8 @@ const AliasModal = styled.div`
 `;
 
 const Field = styled.div`
-    margin: 20px 50px 5px 0px;
-    color: #9ca3af;
+    margin: 20px 100px 5px 0px;
+    color: #4b5563;
+    font-size: small;
     text-transform: uppercase;
 `;
