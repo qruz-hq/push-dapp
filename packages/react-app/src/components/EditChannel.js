@@ -37,6 +37,7 @@ export default function EditChannelModal({
         setChannelCTA(channelDetails.url);
         setChannelName(channelDetails.name);
         setChannelInfo(channelDetails.info);
+        setChannelFile(channelDetails.icon);
     },[])
 
     // Form signer and contract connection
@@ -302,6 +303,7 @@ export default function EditChannelModal({
                         color='#fff'
                         flex="1"
                         radius="0px"
+                        disabled={loading}
                         padding="20px 10px"
                         onClick={e=>editChannel(e)}
                         // disabled={mainAdress.length !== 42}
