@@ -250,6 +250,7 @@ export const Span = styled.span`
   margin: ${(props) => props.margin || "0px"};
   padding: ${(props) => props.padding || "0px"};
   letter-spacing: ${(props) => props.spacing || "inherit"};
+  line-height: ${(props) => props.line || "inherit"};
   text-align: ${(props) => props.textAlign || "initial"};
   border-radius: ${(props) => props.bRadius || "initial"};
 
