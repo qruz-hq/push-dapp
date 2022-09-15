@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.460f12e7.css",
-    "main.js": "/static/js/main.e5fe33a1.js",
+    "main.css": "/static/css/main.12e1f2c8.css",
+    "main.js": "/static/js/main.12daea0c.js",
     "static/js/749.76d01ec8.chunk.js": "/static/js/749.76d01ec8.chunk.js",
     "static/js/314.be95d752.chunk.js": "/static/js/314.be95d752.chunk.js",
     "static/js/744.f0b9b4d0.chunk.js": "/static/js/744.f0b9b4d0.chunk.js",
@@ -80,8 +80,8 @@
     "static/media/trezorDark.svg": "/static/media/trezorDark.9a7ae2d4dbf97bcef582.svg",
     "static/media/trezorLight.svg": "/static/media/trezorLight.643909f8e496b5b6e204.svg",
     "static/media/govOffIcon.svg": "/static/media/govOffIcon.702eb9b7eed2e8eddcb9.svg",
+    "static/media/spinner.svg": "/static/media/spinner.a2b6ab8bd4ed2d1baf7e66134fb0ae46.svg",
     "static/media/inboxOnIcon.svg": "/static/media/inboxOnIcon.27ec8297986e27bfb5df.svg",
-    "static/media/spinner.svg": "/static/media/spinner.2a84484153dbbbd77482a52bf45bb3d0.svg",
     "static/media/incentivesOnIcon.svg": "/static/media/incentivesOnIcon.eb85ba381218a6ac0027.svg",
     "static/media/lightbg.svg": "/static/media/lightbg.bba765cad0cb0869f5b8.svg",
     "static/media/darkbg.svg": "/static/media/darkbg.ef840440def8cd9de7f6.svg",
@@ -109,14 +109,14 @@
     "static/media/chatOnIcon.svg": "/static/media/chatOnIcon.2746e11493ba67189166.svg",
     "static/media/chatOffIcon.svg": "/static/media/chatOffIcon.5ea47cf38e9470d4abad.svg",
     "static/media/yieldIcon.svg": "/static/media/yieldIcon.b095a72a8d05e6822969.svg",
-    "main.460f12e7.css.map": "/static/css/main.460f12e7.css.map",
-    "main.e5fe33a1.js.map": "/static/js/main.e5fe33a1.js.map",
+    "main.12e1f2c8.css.map": "/static/css/main.12e1f2c8.css.map",
+    "main.12daea0c.js.map": "/static/js/main.12daea0c.js.map",
     "749.76d01ec8.chunk.js.map": "/static/js/749.76d01ec8.chunk.js.map",
     "744.f0b9b4d0.chunk.js.map": "/static/js/744.f0b9b4d0.chunk.js.map",
     "260.db2e1083.chunk.js.map": "/static/js/260.db2e1083.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.460f12e7.css",
-    "static/js/main.e5fe33a1.js"
+    "static/css/main.12e1f2c8.css",
+    "static/js/main.12daea0c.js"
   ]
 }
