@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e60bac91.css",
-    "main.js": "/static/js/main.b9fa0154.js",
+    "main.css": "/static/css/main.2c62b18d.css",
+    "main.js": "/static/js/main.539c2e5b.js",
     "static/js/563.aeb25413.chunk.js": "/static/js/563.aeb25413.chunk.js",
     "static/js/992.0d9925dc.chunk.js": "/static/js/992.0d9925dc.chunk.js",
     "static/js/948.5ac118b6.chunk.js": "/static/js/948.5ac118b6.chunk.js",
@@ -103,18 +103,19 @@
     "static/media/homeOffIcon.svg": "/static/media/homeOffIcon.9199d74815665afb7654.svg",
     "static/media/createChannelIcon.svg": "/static/media/createChannelIcon.5f10e60b6f086edfd821.svg",
     "static/media/moon.svg": "/static/media/moon.ef119ae4352088aa3f1d.svg",
+    "static/media/search.svg": "/static/media/search.a819d351caba3cc6508ea8b80e8eead7.svg",
     "static/media/channelsOffIcon.svg": "/static/media/channelsOffIcon.87c18aee63603c98f89f.svg",
     "static/media/ledgerLight.svg": "/static/media/ledgerLight.16518e873449c1c6389723223598199b.svg",
     "static/media/chatOnIcon.svg": "/static/media/chatOnIcon.2746e11493ba67189166.svg",
     "static/media/chatOffIcon.svg": "/static/media/chatOffIcon.5ea47cf38e9470d4abad.svg",
     "static/media/yieldIcon.svg": "/static/media/yieldIcon.b095a72a8d05e6822969.svg",
-    "main.e60bac91.css.map": "/static/css/main.e60bac91.css.map",
-    "main.b9fa0154.js.map": "/static/js/main.b9fa0154.js.map",
+    "main.2c62b18d.css.map": "/static/css/main.2c62b18d.css.map",
+    "main.539c2e5b.js.map": "/static/js/main.539c2e5b.js.map",
     "992.0d9925dc.chunk.js.map": "/static/js/992.0d9925dc.chunk.js.map",
     "948.5ac118b6.chunk.js.map": "/static/js/948.5ac118b6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e60bac91.css",
-    "static/js/main.b9fa0154.js"
+    "static/css/main.2c62b18d.css",
+    "static/js/main.539c2e5b.js"
   ]
 }
