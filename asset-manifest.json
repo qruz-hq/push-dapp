@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0ee85b06.css",
-    "main.js": "/static/js/main.eb10c1bd.js",
+    "main.js": "/static/js/main.f9a92a70.js",
     "static/js/4.6a28f7fe.chunk.js": "/static/js/4.6a28f7fe.chunk.js",
     "static/js/873.7bcacd99.chunk.js": "/static/js/873.7bcacd99.chunk.js",
     "static/js/83.5f82d4b6.chunk.js": "/static/js/83.5f82d4b6.chunk.js",
@@ -135,7 +135,7 @@
     "static/media/yieldIcon.svg": "/static/media/yieldIcon.b095a72a8d05e6822969.svg",
     "static/media/olvyIcon.svg": "/static/media/olvyIcon.6e2a10cdc02844f9eb10.svg",
     "main.0ee85b06.css.map": "/static/css/main.0ee85b06.css.map",
-    "main.eb10c1bd.js.map": "/static/js/main.eb10c1bd.js.map",
+    "main.f9a92a70.js.map": "/static/js/main.f9a92a70.js.map",
     "4.6a28f7fe.chunk.js.map": "/static/js/4.6a28f7fe.chunk.js.map",
     "873.7bcacd99.chunk.js.map": "/static/js/873.7bcacd99.chunk.js.map",
     "83.5f82d4b6.chunk.js.map": "/static/js/83.5f82d4b6.chunk.js.map",
@@ -146,6 +146,6 @@
   },
   "entrypoints": [
     "static/css/main.0ee85b06.css",
-    "static/js/main.eb10c1bd.js"
+    "static/js/main.f9a92a70.js"
   ]
 }
