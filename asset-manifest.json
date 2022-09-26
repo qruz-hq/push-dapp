@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0ee85b06.css",
-    "main.js": "/static/js/main.f9a92a70.js",
+    "main.js": "/static/js/main.716589f4.js",
     "static/js/4.6a28f7fe.chunk.js": "/static/js/4.6a28f7fe.chunk.js",
     "static/js/873.7bcacd99.chunk.js": "/static/js/873.7bcacd99.chunk.js",
     "static/js/83.5f82d4b6.chunk.js": "/static/js/83.5f82d4b6.chunk.js",
@@ -95,12 +95,12 @@
     "static/media/resolver.cjs": "/static/media/resolver.8341148696af66384426.cjs",
     "static/media/wcDark.svg": "/static/media/wcDark.dfa25e470b69d81428be54242b6c9bd1.svg",
     "static/media/wcLight.svg": "/static/media/wcLight.dfa25e470b69d81428be54242b6c9bd1.svg",
+    "index.html": "/index.html",
     "static/media/rockstarsIcon.svg": "/static/media/rockstarsIcon.d0bb8414b32ae4c3bde8.svg",
     "static/media/incentivesOffIcon.svg": "/static/media/incentivesOffIcon.898c3e61ae3272bfb44b.svg",
     "static/media/tick.svg": "/static/media/tick.e91dbbec09e4d4a1cee41dd21d68c252.svg",
     "static/media/sendNotifOnIcon.svg": "/static/media/sendNotifOnIcon.75bd147a765926127a49.svg",
     "static/media/checkmark.svg": "/static/media/checkmark.f549e739d69fb6ced73c0c9f894b2b5b.svg",
-    "index.html": "/index.html",
     "static/media/trezorDark.svg": "/static/media/trezorDark.9a7ae2d4dbf97bcef582.svg",
     "static/media/trezorLight.svg": "/static/media/trezorLight.643909f8e496b5b6e204.svg",
     "static/media/govOffIcon.svg": "/static/media/govOffIcon.702eb9b7eed2e8eddcb9.svg",
@@ -135,7 +135,7 @@
     "static/media/yieldIcon.svg": "/static/media/yieldIcon.b095a72a8d05e6822969.svg",
     "static/media/olvyIcon.svg": "/static/media/olvyIcon.6e2a10cdc02844f9eb10.svg",
     "main.0ee85b06.css.map": "/static/css/main.0ee85b06.css.map",
-    "main.f9a92a70.js.map": "/static/js/main.f9a92a70.js.map",
+    "main.716589f4.js.map": "/static/js/main.716589f4.js.map",
     "4.6a28f7fe.chunk.js.map": "/static/js/4.6a28f7fe.chunk.js.map",
     "873.7bcacd99.chunk.js.map": "/static/js/873.7bcacd99.chunk.js.map",
     "83.5f82d4b6.chunk.js.map": "/static/js/83.5f82d4b6.chunk.js.map",
@@ -146,6 +146,6 @@
   },
   "entrypoints": [
     "static/css/main.0ee85b06.css",
-    "static/js/main.f9a92a70.js"
+    "static/js/main.716589f4.js"
   ]
 }
