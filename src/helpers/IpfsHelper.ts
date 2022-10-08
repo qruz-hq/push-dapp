@@ -13,14 +13,20 @@ export const IPFSupload = async (input: string) => {
   const projectSecret = appConfig.ipfsInfuraAPISecret;
   const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
 
+  // const client = create({
+  //   host: 'ipfs.infura.io',
+  //   port: 5001,
+  //   protocol: 'https',
+  //   apiPath: '/api/v0',
+  //   headers: {
+  //     authorization: auth
+  //   }
+  // });
+
   const client = create({
-    host: 'ipfs.infura.io',
+    host: "34.198.86.176",
     port: 5001,
-    protocol: 'https',
-    apiPath: '/api/v0',
-    headers: {
-      authorization: auth
-    }
+    protocol: "http",
   });
 
   try {
