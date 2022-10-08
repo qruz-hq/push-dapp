@@ -24,7 +24,7 @@ export const IPFSupload = async (input: string) => {
   // });
 
   const client = create({
-    host: "34.198.86.176",
+    host: "ipfs.push.org",
     port: 5001,
     protocol: "http",
   });
