@@ -69,6 +69,7 @@ const ChatBox = ({ setVideoCallInfo }): JSX.Element => {
     setSearchedUser,
     setReceivedIntents,
     setBlockedLoading,
+    avatar,
   }: AppContext = useContext<AppContext>(Context);
   const [newMessage, setNewMessage] = useState<string>('');
   const { chainId, account } = useWeb3React<ethers.providers.Web3Provider>();
@@ -84,7 +85,6 @@ const ChatBox = ({ setVideoCallInfo }): JSX.Element => {
   const theme = useTheme();
   let showTime = false;
   let time = '';
-
   // get ens name
   const ensName = useResolveEns(currentChat?.msg?.name);
 
@@ -250,7 +250,7 @@ const ChatBox = ({ setVideoCallInfo }): JSX.Element => {
     }
   }, [currentChat]);
 
-  const fetchInboxApi = async (createdUser:ConnectedUser): Promise<Feeds> => {
+  const fetchInboxApi = async (createdUser: ConnectedUser): Promise<Feeds> => {
     if (checkConnectedUser(connectedUser)) {
       // Update inbox. We do this because otherwise the currentChat.threadhash after sending the first intent
       // will be undefined since it was not updated right after the intent was sent
@@ -456,9 +456,10 @@ const ChatBox = ({ setVideoCallInfo }): JSX.Element => {
           progress: 85,
           progressNotice: 'This might take a couple of seconds as push nodes sync your info for the first time!',
         });
-
+        console.log("avatar create",avatar)
         const createdUser: User = await PushNodeClient.createUser({
           caip10,
+          profilePicture: avatar,
           did: caip10,
           publicKey: keyPairs.publicKeyArmored,
           encryptedPrivateKey: JSON.stringify(encryptedPrivateKey),
@@ -510,8 +511,10 @@ const ChatBox = ({ setVideoCallInfo }): JSX.Element => {
       } else {
         caip10 = walletToCAIP10({ account: searchedUser, chainId });
       }
+      console.log("avatar encrypt",avatar)
       await PushNodeClient.createUser({
         caip10,
+        profilePicture: avatar,
         did: caip10,
         publicKey: '',
         encryptedPrivateKey: '',
@@ -559,6 +562,7 @@ const ChatBox = ({ setVideoCallInfo }): JSX.Element => {
   const sendIntent = async ({ message, messageType }: { message: string; messageType: string }): Promise<void> => {
     try {
       setMessageBeingSent(true);
+      console.log("avatar send",avatar)
       const { createdUser } = await createUserIfNecessary();
       if (
         currentChat.intent === null ||
@@ -629,8 +633,8 @@ const ChatBox = ({ setVideoCallInfo }): JSX.Element => {
             ),
           });
         }
-      } 
-      
+      }
+
       setSearchedUser('');
       setHasUserBeenSearched(false);
       setActiveTab(0);
@@ -854,7 +858,6 @@ const FirstConversation = styled.div`
   padding: 0px 50px;
 `;
 
-
 const MessageTime = styled(ItemHV2)`
   width: 100%;
   font-size: 11px;
@@ -1029,7 +1032,7 @@ const CustomScrollContent = styled(ScrollToBottom)`
     background: #cf1c84;
     border-radius: 10px;
   }
-`
+`;
 
 const FileUploadLoaderContainer = styled.div`
   border: none;
@@ -1038,6 +1041,6 @@ const FileUploadLoaderContainer = styled.div`
   background-color: transparent;
   margin-right: 2rem;
   color: rgb(58, 103, 137);
-`
+`;
 
 export default ChatBox;

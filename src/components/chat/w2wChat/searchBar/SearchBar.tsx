@@ -38,6 +38,8 @@ const SearchBar = () => {
     userShouldBeSearched,
     setUserShouldBeSearched,
     inbox,
+    avatar,
+    setAvatar,
   }: AppContext = useContext<AppContext>(Context);
   const { chainId } = useWeb3React<Web3Provider>();
   const [filteredUserData, setFilteredUserData] = useState<User[]>([]);
@@ -70,8 +72,12 @@ const SearchBar = () => {
     }
   }, [isInValidAddress]);
 
-  const displayDefaultUser = ({ caip10 }: { caip10: string }): User => {
-    const profilePicture = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAvklEQVR4AcXBsW2FMBiF0Y8r3GQb6jeBxRauYRpo4yGQkMd4A7kg7Z/GUfSKe8703fKDkTATZsJsrr0RlZSJ9r4RLayMvLmJjnQS1d6IhJkwE2bT13U/DBzp5BN73xgRZsJMmM1HOolqb/yWiWpvjJSUiRZWopIykTATZsJs5g+1N6KSMiO1N/5DmAkzYTa9Lh6MhJkwE2ZzSZlo7xvRwson3txERzqJhJkwE2bT6+JhoKTMJ2pvjAgzYSbMfgDlXixqjH6gRgAAAABJRU5ErkJggg==`;
+  const displayDefaultUser = ({ caip10, av }: { caip10: string; av: string }): User => {
+    const profilePicture = `${
+      av
+        ? av
+        : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAvklEQVR4AcXBsW2FMBiF0Y8r3GQb6jeBxRauYRpo4yGQkMd4A7kg7Z/GUfSKe8703fKDkTATZsJsrr0RlZSJ9r4RLayMvLmJjnQS1d6IhJkwE2bT13U/DBzp5BN73xgRZsJMmM1HOolqb/yWiWpvjJSUiRZWopIykTATZsJs5g+1N6KSMiO1N/5DmAkzYTa9Lh6MhJkwE2ZzSZlo7xvRwson3txERzqJhJkwE2bT6+JhoKTMJ2pvjAgzYSbMfgDlXixqjH6gRgAAAABJRU5ErkJggg=='
+    }`;
     const userCreated: User = {
       did: caip10,
       wallets: caip10,
@@ -156,7 +162,9 @@ const SearchBar = () => {
         if (ethers.utils.isAddress(userSearchData)) {
           setUserShouldBeSearched(true);
           setActiveTab(3);
-          const displayUser = displayDefaultUser({ caip10 });
+          const av = await provider.getAvatar(searchedUser);
+          setAvatar(av);
+          const displayUser = displayDefaultUser({ caip10, av });
           setFilteredUserData([displayUser]);
         } else {
           setIsInvalidAddress(true);

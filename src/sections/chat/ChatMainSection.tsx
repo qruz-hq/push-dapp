@@ -22,8 +22,10 @@ import styled, { useTheme } from 'styled-components';
 import * as PushNodeClient from 'api';
 import { ConnectedUser, Feeds, User } from 'api';
 import LoaderSpinner, {
-  LOADER_OVERLAY, LOADER_SPINNER_TYPE, LOADER_TYPE,
-  PROGRESS_POSITIONING
+  LOADER_OVERLAY,
+  LOADER_SPINNER_TYPE,
+  LOADER_TYPE,
+  PROGRESS_POSITIONING,
 } from 'components/reusables/loaders/LoaderSpinner';
 import { VideoCallContext } from 'contexts/VideoCallContext';
 import * as w2wHelper from 'helpers/w2w';
@@ -89,6 +91,8 @@ export interface AppContext {
   setActiveTab: (active: number) => void;
   userShouldBeSearched: boolean;
   setUserShouldBeSearched: (value: boolean) => void;
+  avatar: string;
+  setAvatar: (value: string) => void;
 }
 
 export const ToastPosition: ToastOptions = {
@@ -129,6 +133,7 @@ const ChatMainSection = () => {
   const [hasUserBeenSearched, setHasUserBeenSearched] = useState<boolean>(false);
   const [activeTab, setCurrentTab] = useState<number>(0);
   const [userShouldBeSearched, setUserShouldBeSearched] = useState<boolean>(false);
+  const [avatar, setAvatar] = useState<string>(null);
 
   const chatBoxToast = useToast();
   const queryClient = new QueryClient({});
@@ -157,7 +162,7 @@ const ChatMainSection = () => {
         toPublicKeyArmored: currentChat ? currentChat.publicKey : null,
         privateKeyArmored: connectedUser.privateKey,
         establishConnection: 2,
-      })
+      });
     }
   }, [call]);
 
@@ -169,10 +174,9 @@ const ChatMainSection = () => {
         toPublicKeyArmored: currentChat ? currentChat.publicKey : null,
         privateKeyArmored: connectedUser.privateKey,
         establishConnection: 3,
-      })
+      });
     }
   }, [callAccepted]);
-  
 
   // Rest of the loading logic
   useEffect(() => {
@@ -299,6 +303,8 @@ const ChatMainSection = () => {
               setActiveTab,
               userShouldBeSearched,
               setUserShouldBeSearched,
+              avatar,
+              setAvatar,
             }}
           >
             <ChatSidebarContainer
@@ -355,7 +361,7 @@ const ChatMainSection = () => {
               fromPublicKeyArmored: null,
               toPublicKeyArmored: null,
               privateKeyArmored: null,
-              establishConnection: 0
+              establishConnection: 0,
             });
           }}
         />

@@ -188,6 +188,7 @@ export const postMessage = async ({
 
 export const createUser = async ({
   caip10,
+  profilePicture,
   did,
   publicKey,
   encryptedPrivateKey,
@@ -196,6 +197,7 @@ export const createUser = async ({
   sigType,
 }: {
   caip10: string;
+  profilePicture:string|null;
   did: string;
   publicKey: string;
   encryptedPrivateKey: string;
